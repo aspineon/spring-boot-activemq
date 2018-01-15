@@ -34,13 +34,12 @@ public class SpringBootActivemqConfiguration {
 
 }
 
-class MyMessageConverter extends MappingJackson2MessageConverter implements MessageConverter {
+class MyMessageConverter extends MappingJackson2MessageConverter {
 
 	@Override
 	public Message toMessage(Object object, Session session) throws JMSException, MessageConversionException {
 		Message message = super.toMessage(object, session);
-		//7200000 milisegundos = 2 horas
-		message.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, 300000);
+		message.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, 1000L);
 		return message;
 	}
 

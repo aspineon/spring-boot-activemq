@@ -31,9 +31,9 @@ public class SpringBootActivemqApplicationTests {
 	@Test
 	public void sendSimpleMessage() throws InterruptedException, JMSException {
 		this.producer.send(new Email("jivel@developer.git","This a Test message"));
-		Thread.sleep(1000L);
+		Thread.sleep(2000L);
 		log.info("{}",outputCapture.toString());
-		assertTrue(this.outputCapture.toString().contains("y"));
+		assertTrue(this.outputCapture.toString().contains("jivel@developer.git"));
 	}
 
 }
